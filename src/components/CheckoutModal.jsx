@@ -95,7 +95,8 @@ export default function CheckoutModal({ isOpen, onClose, orderType, orderData })
         
         submitToNetlify()
         
-        const waUrl = `https://wa.me/573017219288?text=${encodeOrder()}`
+        const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '573117449458'
+        const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeOrder()}`
         window.open(waUrl, '_blank')
         
         if (orderType === 'catalogo') clearCart()

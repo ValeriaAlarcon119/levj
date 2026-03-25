@@ -16,7 +16,7 @@ export default function Footer() {
                         <a href="#" className="w-14 h-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-gray-200 text-blue-600 hover:scale-110 hover:shadow-md transition-all">
                             <Facebook className="w-7 h-7" />
                         </a>
-                        <a href="https://wa.me/573017219288" target="_blank" className="w-14 h-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-gray-200 text-green-500 hover:scale-110 hover:shadow-md transition-all">
+                        <a href="https://wa.me/573117449458" target="_blank" className="w-14 h-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-gray-200 text-green-500 hover:scale-110 hover:shadow-md transition-all">
                             <MessageCircle className="w-7 h-7" />
                         </a>
                         <a href="#" className="w-14 h-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-gray-200 text-blue-400 hover:scale-110 hover:shadow-md transition-all">
