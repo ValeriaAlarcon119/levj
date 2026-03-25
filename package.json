@@ -1,7 +1,7 @@
 {
-  "name": "recuerdos-inolvidables",
+  "name": "recuerdos-y-artesanias-levj",
   "version": "1.0.0",
-  "description": "Tienda de regalos artesanales con cajitas personalizadas",
+  "description": "Tienda de regalos artesanales Levj con cajitas personalizadas",
   "type": "module",
   "scripts": {
     "dev": "vite",
