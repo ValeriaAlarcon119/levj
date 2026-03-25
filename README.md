@@ -1,62 +1,50 @@
-# Recuerdos y Artesanías Levj - Documentación del Sistema
+# Recuerdos y Artesanías Levj - Tienda de Detalles con Alma
 
-Esta aplicación es una tienda virtual completa para la gestión de detalles artesanales de Valeria Alarcón. El sistema permite la personalización de productos en tiempo real y gestiona las ventas de manera directa a través de WhatsApp y Correo Electrónico.
+Esta plataforma es la tienda oficial de Recuerdos y Artesanías Levj, diseñada para gestionar la personalización de regalos y automatizar el proceso de pedidos mediante WhatsApp y Correo Electrónico.
 
-🌐 **Sitio web**: [https://levj.netlify.app](https://levj.netlify.app)
-
----
-
-## 🎨 Personalización y Experiencia del Cliente
-
-### 🧸 Selección de Compañero
-El cliente inicia su experiencia eligiendo un personaje amigurumi (Conejito, Osito, Tigre, etc.) que será el protagonista de su cajita. Este sistema permite:
-- **Vista Previa con Glow**: Al hacer clic en un diseño, se abre un modal con un efecto de resplandor neón decorativo.
-- **Confirmación Visual**: Una vez seleccionado, el sistema bloquea la elección para que el cliente pase al siguiente paso con seguridad.
-
-### 🖼️ Personalización del Cuadro (Cajita)
-El sistema genera una **vista previa dinámica** del cuadro de nacimiento:
-- **Nombre y Apellidos**: Se visualizan con una fuente cursiva elegante (font-script) sobre el diseño base.
-- **Métrica de Nacimiento**: La fecha, hora, peso y talla se posicionan automáticamente en el diseño.
-- **Foto del Bebé**: El cliente puede subir una foto (opcional) que se visualiza dentro de un marco circular neón en el centro del cuadro.
-- **Eliminación de Elementos Viejos**: El software aplica "capas de limpieza" inteligentes (divs de color base con blur) para tapar elementos del diseño original y que los nuevos datos se vean limpios.
+🌐 **Sitio Web Oficial**: [https://levj.netlify.app](https://levj.netlify.app)
+🚀 **Plataforma de Despliegue**: Netlify (Serverless)
 
 ---
 
-## 🛒 Proceso de Compra y Redireccionamiento
+## 🧸 Personalización Inteligente de Detalles
 
-### 1. Validación del Cliente
-El sistema implementa una **memoria local inteligente**:
-- Al intentar comprar, el cliente ingresa su número de celular.
-- **Si el cliente ya compró antes**: El sistema lo reconoce mediante `localStorage`, lo saluda por su nombre ("¡Hola de nuevo, Maria!") y le muestra sus datos de entrega guardados (Nombre y Dirección).
-- **Si es nuevo**: Se le solicita completar sus datos por única vez.
+El sistema ofrece una experiencia de personalización avanzada para las **Cajitas de Nacimiento**:
 
-### 2. Edición de Datos
-En cualquier momento antes de finalizar, el cliente puede:
-- **Editar**: Un botón de edición permite corregir el nombre o la dirección si ha cambiado.
-- **Validación en Tiempo Real**: El botón de envío solo se activa si los datos mínimos de contacto están presentes.
+### 1. Selección de Compañero (Glow Effect)
+El cliente elige un amigurumi protagonista. Al interactuar con el diseño, se activa un efecto de resplandor neón decorativo resalta la calidad artesanal del muñequito.
 
-### 3. Venta por WhatsApp y Correo (Flujo Directo)
-Al presionar "Finalizar Pedido", el sistema realiza dos acciones simultáneas:
-- **WhatsApp Web (Redireccionamiento)**: Abre automáticamente una conversación con la dueña de la tienda (`3117449458`). El mensaje está **pre-diseñado** en negritas y con formato, detallando:
-    - Nombre del cliente y datos de entrega.
-    - El tipo de pedido (Cajita Personalizada o Productos del Catálogo).
-    - El desglose de precios y el total a pagar.
-- **Notificación por Correo**: Envía un formulario invisible a Netlify (`marialevj1967@gmail.com`) que guarda el registro del pedido como respaldo y notificación oficial.
+### 2. Cuadro Proyectado en Tiempo Real (Digital Identity)
+La plataforma genera visualmente el cuadro final del bebé:
+- **Datos de Nacimiento**: El nombre, fecha, hora, peso y talla se imprimen digitalmente sobre el diseño.
+- **Capa de Limpieza Inteligente**: Se aplican filtros de desvío y limpieza visual sobre la imagen base para asegurar que la tipografía nueva se vea perfecta y sin ruidos del fondo original.
+- **Preview de Fotografía**: Permite cargar una foto real del bebé para visualizarla en el centro del diseño antes de confirmar el pedido.
 
 ---
 
-## 📦 Gestión del Catálogo y Precios
+## 🛒 Gestión de Ventas y Fidelización
 
-- **Detalles y Precios**: Cada producto en el catálogo muestra su precio formateado en pesos colombianos ($ COP), una descripción detallada de los materiales y un botón de acción rápida para agregar a la canasta.
-- **Cajitas de la Tienda**: Los productos del catálogo son independientes de la "Cajita Personalizada" de la página principal, permitiendo que el cliente compre ambos tipos de artículos en un solo pedido consolidado.
+### Validación Automática de Clientes (Smart Memory)
+Para mejorar la rapidez de compra, el sistema reconoce el número de celular:
+- **Si el cliente es recurrente**: El sistema recupera el nombre y la dirección de entregas anteriores, optimizando el tiempo ("¡Hola de nuevo, Maria!").
+- **Edición Dinámica**: El cliente siempre puede editar sus datos de entrega en el modal final si estos han cambiado.
 
-## ⚙️ Configuración del Servidor (Netlify)
-
-Para que los correos y el contacto funcionen, se deben configurar estas **Variables de Entorno** en Netlify:
-- `VITE_WHATSAPP_NUMBER`: El número sin espacios (Ej: 573117449458).
-- `SHOP_EMAIL`: marialevj1967@gmail.com
-- `SMTP_USER`: Tu correo Gmail.
-- `SMTP_PASS`: Tu Contraseña de Aplicación de Google.
+### Integración WhatsApp + Email (Compra Segura)
+El proceso de compra no termina en un carrito pasivo, sino que inicia una conversación directa:
+- **Redirección WhatsApp Directa**: Al finalizar, se abre un chat con la tienda (`3117449458`) con un mensaje estructurado que incluye todos los detalles técnicos y precios.
+- **Respaldo por Correo**: Se envía una copia automática a `marialevj1967@gmail.com` para que el pedido quede registrado oficialmente.
 
 ---
-© 2026 Recuerdos y Artesanías Levj. Hecho con amor para durar por siempre.
+
+## 📂 Organización del Catálogo
+
+El catálogo digital está dividido en colecciones artesanales con precios detallados y descripciones de materiales:
+- **Amigurumis**: Filtros por personaje y tamaño.
+- **Joyería en Mostacilla**: Aretes y accesorios tejidos.
+- **Boxes de Regalo**: Selección de productos listos para regalar.
+- **Temporadas**: Regalos temáticos actualizados.
+
+---
+**Hecho con amor y pasión por lo artesanal.** ❤
+🎓 **Desarrollado por**: Valeria Alarcón Andrade | Ingeniera de Sistemas | Universidad de Nariño.
+© 2026 Recuerdos y Artesanías Levj. Todos los derechos reservados.
