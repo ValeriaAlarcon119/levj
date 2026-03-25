@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuerdos Inolvidables | Regalos con Alma</title>
+    <meta name="description"
+        content="Regalos artesanales hechos con amor. Cajitas de nacimiento personalizadas, amigurumis, joyería en mostacilla y más.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-5deg); }
+            50% { transform: translateX(5px) rotate(5deg); }
+            75% { transform: translateX(-5px) rotate(-5deg); }
+            100% { transform: translateX(0); }
+        }
+        .animate-shake {
+            animation: shake 0.2s cubic-bezier(.36,.07,.19,.97) both infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!-- Hidden form for Netlify Capture & Email Notifications -->
+    <form name="orders" data-netlify="true" hidden>
+        <input type="text" name="type" />
+        <input type="text" name="customer_name" />
+        <input type="text" name="customer_phone" />
+        <input type="text" name="customer_address" />
+        <textarea name="order_details"></textarea>
+    </form>
+
+    <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
