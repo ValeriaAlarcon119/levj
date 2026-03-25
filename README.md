@@ -44,7 +44,14 @@ El catálogo digital está dividido en colecciones artesanales con precios detal
 - **Boxes de Regalo**: Selección de productos listos para regalar.
 - **Temporadas**: Regalos temáticos actualizados.
 
----
-**Hecho con amor y pasión por lo artesanal.** ❤
-🎓 **Desarrollado por**: Valeria Alarcón Andrade | Ingeniera de Sistemas | Universidad de Nariño.
+## 👩‍💻 Autoría Profesional
+
+Este sistema ha sido diseñado, desarrollado y optimizado por:
+
+### **Ing. Valeria Alarcón Andrade**
+**Ingeniera de Sistemas - Universidad de Nariño (Pasto, Nariño)**
+
+Desarrollado íntegramente por **Valeria Alarcón Andrade**, Ingeniera de Sistemas comprometida con la excelencia técnica y la creación de experiencias digitales premium.
+
 © 2026 Recuerdos y Artesanías Levj. Todos los derechos reservados.
+
