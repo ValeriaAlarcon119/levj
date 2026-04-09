@@ -1,13 +1,29 @@
 # Recuerdos y Artesanías Levj - Tienda de Detalles con Alma
 
-Esta plataforma es la tienda oficial de Recuerdos y Artesanías Levj, diseñada para gestionar la personalización de regalos y automatizar el proceso de pedidos mediante WhatsApp y Correo Electrónico.
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com/)
+
+Esta plataforma es la tienda oficial de Recuerdos y Artesanías Levj, una **Single Page Application (SPA)** moderna construida con **React 18**. Está diseñada para gestionar la personalización de regalos y automatizar el proceso de pedidos mediante WhatsApp y Correo Electrónico.
 
 🌐 **Sitio Web Oficial**: [https://levj.netlify.app](https://levj.netlify.app)
-🚀 **Plataforma de Despliegue**: Netlify (Serverless)
+
+---
+
+## 🛠️ Stack Tecnológico
+
+- **Frontend**: React 18 (Hooks, Context API)
+- **Routing**: React Router DOM v6
+- **Estilos**: Tailwind CSS (Diseño Responsivo y animaciones personalizadas)
+- **Estado**: Zustand (Gestión eficiente del carrito)
+- **Herramientas de Construcción**: Vite.js
+- **Despliegue**: Netlify (CI/CD)
 
 ---
 
 ## 🧸 Personalización Inteligente de Detalles
+
 
 El sistema ofrece una experiencia de personalización avanzada para las **Cajitas de Nacimiento**:
 

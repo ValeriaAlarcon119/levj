@@ -1,0 +1,4 @@
+# Ignore static HTML files for language statistics to highlight React/JS experience
+index_static.html linguist-vendored
+*.pdf linguist-vendored
+index_files/* linguist-vendored
