@@ -10,7 +10,7 @@ export default function Footer() {
                     </h2>
                     
                     <div className="flex flex-wrap justify-center gap-6">
-                        <a href="#" className="w-14 h-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-gray-200 text-pink-500 hover:scale-110 hover:shadow-md transition-all">
+                        <a href="https://www.instagram.com/levj.mostacillaycrochet/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Levj" className="w-14 h-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-gray-200 text-pink-500 hover:scale-110 hover:shadow-md transition-all">
                             <Instagram className="w-7 h-7" />
                         </a>
                         <a href="#" className="w-14 h-14 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-gray-200 text-blue-600 hover:scale-110 hover:shadow-md transition-all">
