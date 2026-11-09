@@ -1,40 +1,62 @@
 import { useNavigate } from 'react-router-dom'
-import { Gift, Heart, Gem, ToyBrick, Key, CalendarHeart } from 'lucide-react'
+import { Gift, Gem, ToyBrick, Key, Zap, Clock } from 'lucide-react'
 
+// Badge de disponibilidad: 'immediate' = Entrega Inmediata | 'on-order' = Sobre Pedido
 const categories = [
     {
-        id: 'boxes',
-        title: 'Cajitas de Regalo',
-        description: 'Detalles premium listos para entregar.',
-        icon: Gift,
-        color: 'pink',
-        image: '/osito.webp',
+        id: 'joyeria',
+        title: 'Joyería Artesanal',
+        description: 'Aretes en mostacilla checa y micro-crochet. ¡Listos para llevar!',
+        icon: Gem,
+        color: 'blue',
+        image: '/Joyeria/portadaJoyeria.webp',
+        availability: 'immediate',
     },
     {
         id: 'amigurumis',
         title: 'Amigurumis',
-        description: 'Ternura tejida 100% a mano.',
+        description: 'Hello Kitty, Garfield, Snoopy, perritos y más — tejidos con amor.',
         icon: ToyBrick,
         color: 'orange',
         image: '/conejito.webp',
-    },
-    {
-        id: 'joyeria',
-        title: 'Joyería Artesanal',
-        description: 'Mostacilla sagrada y micro-crochet.',
-        icon: Gem,
-        color: 'blue',
-        image: '/Joyeria/portadaJoyeria.webp',
+        availability: 'on-order',
     },
     {
         id: 'llaveros',
         title: 'Llaveros',
-        description: 'Mini personajes y letras personalizadas.',
+        description: 'Mini personajes y letras personalizadas en crochet.',
         icon: Key,
         color: 'green',
         image: '/conejito.webp',
+        availability: 'on-order',
+    },
+    {
+        id: 'boxes',
+        title: 'Cajitas de Regalo',
+        description: 'Detalles premium con amigurumi incluido.',
+        icon: Gift,
+        color: 'pink',
+        image: '/osito.webp',
+        availability: 'on-order',
     },
 ]
+
+const AvailabilityBadge = ({ type }) => {
+    if (type === 'immediate') {
+        return (
+            <span className="absolute top-4 right-4 z-10 flex items-center gap-1.5 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg">
+                <Zap className="w-3 h-3 fill-white" />
+                Entrega Inmediata
+            </span>
+        )
+    }
+    return (
+        <span className="absolute top-4 right-4 z-10 flex items-center gap-1.5 bg-amber-400 text-gray-900 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg">
+            <Clock className="w-3 h-3" />
+            Sobre Pedido
+        </span>
+    )
+}
 
 export default function CatalogPreview() {
     const navigate = useNavigate()
@@ -49,6 +71,15 @@ export default function CatalogPreview() {
                 <p className="text-gray-500 max-w-xl mx-auto text-lg italic">
                     Regalos artesanales hechos con el corazón para momentos inolvidables.
                 </p>
+                {/* Leyenda de disponibilidad */}
+                <div className="flex justify-center gap-4 mt-5 flex-wrap">
+                    <span className="flex items-center gap-1.5 bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-200">
+                        <Zap className="w-3 h-3" /> Entrega Inmediata — disponibles en stock
+                    </span>
+                    <span className="flex items-center gap-1.5 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full border border-amber-200">
+                        <Clock className="w-3 h-3" /> Sobre Pedido — te lo hacemos con amor
+                    </span>
+                </div>
                 <div className="w-24 h-1 bg-primary-200 mx-auto mt-6 rounded-full"></div>
             </div>
 
@@ -62,6 +93,9 @@ export default function CatalogPreview() {
                             className="group cursor-pointer"
                         >
                             <div className="relative h-72 rounded-[2.5rem] overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-500 mb-5">
+                                {/* Badge de disponibilidad */}
+                                <AvailabilityBadge type={cat.availability} />
+
                                 <img
                                     src={cat.image}
                                     alt={cat.title}
@@ -78,13 +112,25 @@ export default function CatalogPreview() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="text-center">
+
+                            {/* Texto CTA + nota de disponibilidad */}
+                            <div className="text-center space-y-2">
                                 <span className="inline-flex items-center text-gray-900 font-black text-sm uppercase tracking-widest group-hover:text-primary-600 transition-colors">
                                     Ver Colección
                                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="RB17 8l4 4m0 0l-4 4m4-4H3" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
                                 </span>
+                                {cat.availability === 'on-order' && (
+                                    <p className="text-xs text-amber-700 italic font-medium">
+                                        Escríbenos por WhatsApp para hacer tu pedido ✨
+                                    </p>
+                                )}
+                                {cat.availability === 'immediate' && (
+                                    <p className="text-xs text-emerald-700 italic font-medium">
+                                        ¡Disponibles ya! Escríbenos para coordinar entrega 🚀
+                                    </p>
+                                )}
                             </div>
                         </div>
                     )
@@ -93,4 +139,3 @@ export default function CatalogPreview() {
         </section>
     )
 }
-

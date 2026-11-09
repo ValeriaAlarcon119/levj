@@ -3,16 +3,80 @@ import { useParams } from 'react-router-dom'
 import ProductGrid from '../components/ProductGrid'
 import QuoteModal from '../components/QuoteModal'
 import { products } from '../data/products'
+import { Zap, Clock } from 'lucide-react'
 
+// Categorías con su disponibilidad
 const categories = [
     { id: 'todos', label: 'Todos', color: 'gray' },
-    { id: 'boxes', label: 'Cajitas de Regalo', color: 'sky', image: '/vistaPrevia.webp' },
-    { id: 'amigurumis', label: 'Amigurumis', color: 'orange', image: '/osito.webp' },
-    { id: 'joyeria', label: 'Joyería & Mostacilla', color: 'emerald', image: '/Joyeria/portadaJoyeria.webp' },
-    { id: 'parejas', label: 'Parejas & Amor', color: 'rose', image: '/Joyeria/CorazonyMurano.webp' },
-    { id: 'llaveros', label: 'Llaveros', color: 'green', image: '/conejito.webp' },
-    { id: 'fechas', label: 'Temporadas & Regalos', color: 'purple', image: '/osito.webp' }, // Temporarily osito, or maybe something else
+    {
+        id: 'joyeria',
+        label: 'Joyería & Mostacilla',
+        color: 'emerald',
+        image: '/Joyeria/portadaJoyeria.webp',
+        availability: 'immediate',
+        availNote: 'Aretes en mostacilla checa y micro-crochet — ¡disponibles ya!',
+    },
+    {
+        id: 'amigurumis',
+        label: 'Amigurumis',
+        color: 'orange',
+        image: '/osito.webp',
+        availability: 'on-order',
+        availNote: 'Hello Kitty, Garfield, Snoopy, perritos y más — se trabajan sobre pedido.',
+    },
+    {
+        id: 'llaveros',
+        label: 'Llaveros',
+        color: 'green',
+        image: '/conejito.webp',
+        availability: 'on-order',
+        availNote: 'Mini personajes y letras personalizadas — se trabajan sobre pedido.',
+    },
+    {
+        id: 'boxes',
+        label: 'Cajitas de Regalo',
+        color: 'sky',
+        image: '/vistaPrevia.webp',
+        availability: 'on-order',
+        availNote: 'Sets premium con amigurumi — se trabajan sobre pedido.',
+    },
+    {
+        id: 'parejas',
+        label: 'Parejas & Amor',
+        color: 'rose',
+        image: '/Joyeria/CorazonyMurano.webp',
+        availability: 'on-order',
+        availNote: 'Detalles para parejas — se trabajan sobre pedido.',
+    },
+    {
+        id: 'fechas',
+        label: 'Temporadas & Regalos',
+        color: 'purple',
+        image: '/osito.webp',
+        availability: 'on-order',
+        availNote: 'Regalos especiales de temporada — se trabajan sobre pedido.',
+    },
 ]
+
+const AvailabilityBadge = ({ type }) => {
+    if (type === 'immediate') {
+        return (
+            <span className="absolute top-4 right-4 z-10 flex items-center gap-1.5 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg">
+                <Zap className="w-3 h-3 fill-white" />
+                Entrega Inmediata
+            </span>
+        )
+    }
+    if (type === 'on-order') {
+        return (
+            <span className="absolute top-4 right-4 z-10 flex items-center gap-1.5 bg-amber-400 text-gray-900 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg">
+                <Clock className="w-3 h-3" />
+                Sobre Pedido
+            </span>
+        )
+    }
+    return null
+}
 
 export default function Catalog() {
     const { category: urlCategory } = useParams()
@@ -27,6 +91,7 @@ export default function Catalog() {
 
     const filteredProducts = products.filter(p => p.category === activeCategory)
     const showCategories = activeCategory === 'todos'
+    const activeCat = categories.find(c => c.id === activeCategory)
 
     return (
         <div className="container mx-auto px-4 py-8 animate-fade-in">
@@ -38,6 +103,15 @@ export default function Catalog() {
                 <p className="text-gray-600 max-w-lg mx-auto text-lg italic">
                     Regalos únicos, artesanales y hechos con todo el corazón.
                 </p>
+                {/* Leyenda de disponibilidad */}
+                <div className="flex justify-center gap-3 mt-5 flex-wrap">
+                    <span className="flex items-center gap-1.5 bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-200">
+                        <Zap className="w-3 h-3" /> Entrega Inmediata
+                    </span>
+                    <span className="flex items-center gap-1.5 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full border border-amber-200">
+                        <Clock className="w-3 h-3" /> Sobre Pedido
+                    </span>
+                </div>
                 <div className="mt-6 flex justify-center gap-3">
                     <span className="w-10 h-1 rounded-full bg-pink-300"></span>
                     <span className="w-10 h-1 rounded-full bg-blue-300"></span>
@@ -70,6 +144,9 @@ export default function Catalog() {
                             onClick={() => setActiveCategory(cat.id)}
                             className="relative group cursor-pointer overflow-hidden rounded-[3rem] aspect-[4/5] shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border-4 border-white"
                         >
+                            {/* Badge de disponibilidad */}
+                            {cat.availability && <AvailabilityBadge type={cat.availability} />}
+
                             <img 
                                 src={cat.image || '/conejito.webp'} 
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
@@ -78,6 +155,11 @@ export default function Catalog() {
                             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent flex flex-col justify-end p-10">
                                 <span className={`w-12 h-1.5 rounded-full mb-4 bg-pink-500`} />
                                 <h3 className="text-4xl font-bold text-white mb-2 font-script italic">{cat.label}</h3>
+                                {cat.availNote && (
+                                    <p className="text-gray-200 text-sm italic mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        {cat.availNote}
+                                    </p>
+                                )}
                                 <p className="text-gray-300 text-sm font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
                                     Explorar Colección →
                                 </p>
@@ -87,14 +169,25 @@ export default function Catalog() {
                 </div>
             ) : (
                 <div className="animate-fade-in">
-                   <div className="flex items-center gap-4 mb-8">
+                   <div className="flex items-center gap-4 mb-6 flex-wrap">
                        <button 
                          onClick={() => setActiveCategory('todos')}
                          className="text-pink-600 font-bold hover:underline flex items-center gap-2"
                         >
                            ← Volver al Menú
                        </button>
-                       <h3 className="text-3xl font-bold font-script italic">{categories.find(c => c.id === activeCategory)?.label}</h3>
+                       <h3 className="text-3xl font-bold font-script italic">{activeCat?.label}</h3>
+                       {/* Badge de disponibilidad en la vista de productos */}
+                       {activeCat?.availability === 'immediate' && (
+                           <span className="flex items-center gap-1.5 bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-200">
+                               <Zap className="w-3 h-3" /> Entrega Inmediata
+                           </span>
+                       )}
+                       {activeCat?.availability === 'on-order' && (
+                           <span className="flex items-center gap-1.5 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full border border-amber-200">
+                               <Clock className="w-3 h-3" /> Sobre Pedido — te lo hacemos con amor ✨
+                           </span>
+                       )}
                    </div>
                    <ProductGrid products={filteredProducts} />
                 </div>
